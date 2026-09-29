@@ -12,41 +12,46 @@
       background: #d4e4f7;
       color: #000;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* HEADER kiểu 2010 */
+    /* HEADER */
     #header {
       background: linear-gradient(to bottom, #1a5fb4, #0d47a1);
       border-bottom: 4px solid #08306b;
       padding: 10px 15px;
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
       box-shadow: 0 3px 6px rgba(0,0,0,0.3);
     }
 
     #header img.logo {
-      height: 70px;
+      height: 60px;
       width: auto;
+      max-width: 70px;
       background: white;
-      padding: 4px;
+      padding: 3px;
       border: 2px solid #fff;
       border-radius: 4px;
+      object-fit: contain;
     }
 
     #header .title-box {
       color: white;
       text-shadow: 1px 1px 2px #000;
+      flex: 1;
     }
 
     #header h1 {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: bold;
       margin-bottom: 2px;
     }
 
     #header p {
-      font-size: 13px;
+      font-size: 12px;
       opacity: 0.9;
     }
 
@@ -70,83 +75,67 @@
       margin-right: 6px;
     }
 
-    /* LOGIN SCREEN */
-    #login-screen {
-      max-width: 500px;
-      margin: 60px auto;
+    /* MAIN LAYOUT */
+    #main {
+      display: none;
+      flex: 1;
+      max-width: 1100px;
+      margin: 12px auto;
+      width: 95%;
+      gap: 12px;
+    }
+
+    /* SIDEBAR */
+    #sidebar {
+      width: 200px;
       background: white;
       border: 3px solid #1a5fb4;
       border-radius: 6px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       overflow: hidden;
+      flex-shrink: 0;
     }
 
-    #login-screen .login-header {
+    #sidebar .side-header {
       background: linear-gradient(to bottom, #1a5fb4, #0d47a1);
       color: white;
-      padding: 12px;
-      text-align: center;
-      font-size: 16px;
+      padding: 10px;
       font-weight: bold;
-      border-bottom: 2px solid #08306b;
-    }
-
-    #login-screen .login-body {
-      padding: 30px 25px;
+      font-size: 14px;
       text-align: center;
     }
 
-    #login-screen .login-body img.logo-big {
-      height: 110px;
-      margin-bottom: 15px;
+    .room-btn {
+      display: block;
+      width: 100%;
+      padding: 11px 14px;
+      border: none;
       background: white;
-      padding: 6px;
-      border: 2px solid #1a5fb4;
-    }
-
-    #login-screen p {
-      margin-bottom: 20px;
-      color: #333;
-      font-size: 14px;
-    }
-
-    /* BUTTON kiểu cũ */
-    .btn {
-      background: linear-gradient(to bottom, #4caf50, #2e7d32);
-      color: white;
-      border: 2px solid #1b5e20;
-      padding: 8px 22px;
-      font-size: 14px;
-      font-weight: bold;
+      text-align: left;
+      font-size: 13px;
       cursor: pointer;
-      border-radius: 4px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      border-bottom: 1px solid #e3f2fd;
+      font-family: Tahoma, Arial, sans-serif;
     }
 
-    .btn:hover {
-      background: linear-gradient(to bottom, #66bb6a, #388e3c);
+    .room-btn:hover {
+      background: #e3f2fd;
     }
 
-    .btn-logout {
-      background: linear-gradient(to bottom, #e53935, #c62828);
-      border-color: #b71c1c;
-      padding: 5px 12px;
-      font-size: 12px;
+    .room-btn.active {
+      background: #bbdefb;
+      font-weight: bold;
+      color: #0d47a1;
+      border-left: 4px solid #0d47a1;
     }
 
-    .btn-logout:hover {
-      background: linear-gradient(to bottom, #ef5350, #d32f2f);
-    }
-
-    /* CHAT SCREEN */
-    #chat-screen {
-      display: none;
-      max-width: 900px;
-      margin: 15px auto;
+    /* CHAT AREA */
+    #chat-area {
+      flex: 1;
       background: white;
       border: 3px solid #1a5fb4;
       border-radius: 6px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
     }
 
@@ -156,15 +145,15 @@
       padding: 10px 15px;
       font-weight: bold;
       font-size: 15px;
-      border-bottom: 2px solid #08306b;
     }
 
     #messages {
-      height: 420px;
+      flex: 1;
       overflow-y: auto;
       padding: 12px;
       background: #f8fbff;
-      border-bottom: 2px solid #90caf9;
+      min-height: 350px;
+      max-height: 450px;
     }
 
     .message {
@@ -198,17 +187,17 @@
       margin-top: 4px;
     }
 
-    /* INPUT */
     #input-area {
       padding: 12px;
       background: #e3f2fd;
       display: flex;
       gap: 8px;
+      border-top: 2px solid #90caf9;
     }
 
     #message-input {
       flex: 1;
-      padding: 8px 12px;
+      padding: 9px 12px;
       border: 2px solid #90caf9;
       border-radius: 3px;
       font-size: 14px;
@@ -220,13 +209,92 @@
       border-color: #1a5fb4;
     }
 
-    /* FOOTER */
+    /* BUTTONS */
+    .btn {
+      background: linear-gradient(to bottom, #4caf50, #2e7d32);
+      color: white;
+      border: 2px solid #1b5e20;
+      padding: 8px 18px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .btn:hover {
+      background: linear-gradient(to bottom, #66bb6a, #388e3c);
+    }
+
+    .btn-logout {
+      background: linear-gradient(to bottom, #e53935, #c62828);
+      border-color: #b71c1c;
+      padding: 5px 12px;
+      font-size: 12px;
+    }
+
+    /* LOGIN */
+    #login-screen {
+      max-width: 480px;
+      margin: 50px auto;
+      background: white;
+      border: 3px solid #1a5fb4;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    #login-screen .login-header {
+      background: linear-gradient(to bottom, #1a5fb4, #0d47a1);
+      color: white;
+      padding: 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    #login-screen .login-body {
+      padding: 30px 25px;
+      text-align: center;
+    }
+
+    #login-screen .login-body img.logo-big {
+      height: 100px;
+      max-width: 120px;
+      margin-bottom: 15px;
+      background: white;
+      padding: 5px;
+      border: 2px solid #1a5fb4;
+      object-fit: contain;
+    }
+
     #footer {
       text-align: center;
       padding: 12px;
       font-size: 12px;
       color: #555;
-      margin-top: 20px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 700px) {
+      #main {
+        flex-direction: column;
+        width: 98%;
+      }
+      #sidebar {
+        width: 100%;
+      }
+      #header h1 {
+        font-size: 16px;
+      }
+      #header p {
+        font-size: 11px;
+      }
+      #header img.logo {
+        height: 48px;
+      }
+      #messages {
+        max-height: 320px;
+      }
     }
   </style>
 </head>
@@ -234,10 +302,10 @@
 
   <!-- HEADER -->
   <div id="header">
-    <img src="logo.jpg" alt="Logo" class="logo">
+    <img src="logo.jpg" alt="Logo" class="logo" onerror="this.style.display='none'">
     <div class="title-box">
       <h1>PPSOnline</h1>
-      <p>Diễn đàn Trường Phổ thông Thực hành Sư phạm - Đại học An Giang</p>
+      <p>Diễn đàn Trường Phổ thông Thực hành Sư phạm - ĐH An Giang</p>
     </div>
   </div>
 
@@ -250,29 +318,43 @@
     <button class="btn btn-logout" onclick="logout()">Đăng xuất</button>
   </div>
 
-  <!-- LOGIN SCREEN -->
+  <!-- LOGIN -->
   <div id="login-screen">
     <div class="login-header">ĐĂNG NHẬP PPSOnline</div>
     <div class="login-body">
-      <img src="logo.jpg" alt="Logo" class="logo-big">
-      <p>Vui lòng đăng nhập bằng tài khoản Google để tham gia trò chuyện</p>
+      <img src="logo.jpg" alt="Logo" class="logo-big" onerror="this.style.display='none'">
+      <p>Đăng nhập bằng Google để tham gia diễn đàn</p>
       <button class="btn" onclick="loginWithGoogle()">Đăng nhập với Google</button>
     </div>
   </div>
 
-  <!-- CHAT SCREEN -->
-  <div id="chat-screen">
-    <div id="chat-header">💬 Phòng chat chung PPSOnline - Mọi người đều có thể nhắn tin</div>
-    <div id="messages"></div>
-    <div id="input-area">
-      <input type="text" id="message-input" placeholder="Nhập nội dung tin nhắn..." autocomplete="off">
-      <button class="btn" id="send-btn" onclick="sendMessage()">Gửi</button>
+  <!-- MAIN -->
+  <div id="main">
+    <!-- SIDEBAR -->
+    <div id="sidebar">
+      <div class="side-header">DANH MỤC</div>
+      <button class="room-btn active" data-room="chung">💬 Phòng chung</button>
+      <button class="room-btn" data-room="lop6">📘 Lớp 6</button>
+      <button class="room-btn" data-room="lop7">📘 Lớp 7</button>
+      <button class="room-btn" data-room="lop8">📘 Lớp 8</button>
+      <button class="room-btn" data-room="lop9">📘 Lớp 9</button>
+      <button class="room-btn" data-room="lop10">📗 Lớp 10</button>
+      <button class="room-btn" data-room="lop11">📗 Lớp 11</button>
+      <button class="room-btn" data-room="lop12">📗 Lớp 12</button>
+    </div>
+
+    <!-- CHAT -->
+    <div id="chat-area">
+      <div id="chat-header">💬 Phòng chung</div>
+      <div id="messages"></div>
+      <div id="input-area">
+        <input type="text" id="message-input" placeholder="Nhập tin nhắn..." autocomplete="off" maxlength="500">
+        <button class="btn" onclick="sendMessage()">Gửi</button>
+      </div>
     </div>
   </div>
 
-  <div id="footer">
-    © 2025 PPSOnline - Diễn đàn Trường Phổ thông Thực hành Sư phạm - Đại học An Giang
-  </div>
+  <div id="footer">© 2025 PPSOnline - Trường Phổ thông Thực hành Sư phạm - Đại học An Giang</div>
 
   <script type="module">
     const firebaseConfig = {
@@ -288,106 +370,80 @@
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getDatabase, ref, push, onChildAdded, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+    import { getDatabase, ref, push, onChildAdded, serverTimestamp, query, orderByChild, startAt, endAt, get, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getDatabase(app);
     const provider = new GoogleAuthProvider();
 
+    const DAY = 24 * 60 * 60 * 1000; // 1 ngày
+    let currentRoom = "chung";
+    let unsubscribe = null;
+
     const loginScreen = document.getElementById('login-screen');
-    const chatScreen = document.getElementById('chat-screen');
+    const main = document.getElementById('main');
     const userBar = document.getElementById('user-bar');
     const messagesDiv = document.getElementById('messages');
     const messageInput = document.getElementById('message-input');
+    const chatHeader = document.getElementById('chat-header');
 
-    const badWords = [
-      "buồi", "buoi", "dau buoi", "daubuoi", "caidaubuoi", "nhucaidaubuoi",
-      "dau boi", "bòi", "dauboi", "caidauboi", "đầu bòy", "đầu bùi",
-      "dau boy", "dauboy", "caidauboy", "b`",
-      "cặc", "kak", "kac", "cac", "concak", "nungcak", "bucak",
-      "caiconcac", "caiconcak", "cu", "cặk", "cak", "dái", "giái", "zái", "kiu",
-      "cứt", "cuccut", "cutcut", "cứk", "cuk", "cười ỉa", "cười ẻ",
-      "đéo", "đếch", "đếk", "dek", "đết", "đệt", "đách", "dech", "đ'",
-      "deo", "d'", "đel", "đél", "del", "dell ngửi", "dell ngui",
-      "dell chịu", "dell chiu", "dell hiểu", "dell hieu", "dellhieukieugi",
-      "dell nói", "dell noi", "dellnoinhieu", "dell biết", "dell biet",
-      "dell nghe", "dell ăn", "dell an", "dell được", "dell duoc",
-      "dell làm", "dell lam", "dell đi", "dell di", "dell chạy", "dell chay",
-      "deohieukieugi",
-      "địt", "đm", "dm", "đmm", "dmm", "đmmm", "dmmm", "đmmmm", "dmmmm",
-      "đmmmmm", "dmmmmm", "đcm", "dcm", "đcmm", "dcmm", "đcmmm", "dcmmm",
-      "đcmmmm", "dcmmmm", "đệch", "dit", "dis", "diz", "đjt", "djt",
-      "địt mẹ", "địt mịe", "địt má", "địt mía", "địt ba", "địt bà",
-      "địt cha", "địt con", "địt bố", "địt cụ", "dis me", "disme",
-      "dismje", "dismia", "dis mia", "dis mie", "đis mịa", "đis mịe",
-      "ditmemayconcho", "ditmemay", "ditmethangoccho", "ditmeconcho",
-      "dmconcho", "dmcs", "ditmecondi", "ditmecondicho",
-      "đụ", "đụ mẹ", "đụ mịa", "đụ mịe", "đụ má", "đụ cha", "đụ bà",
-      "đú cha", "đú con mẹ", "đú má", "đú mẹ", "đù cha", "đù má",
-      "đù mẹ", "đù mịe", "đù mịa", "đủ cha", "đủ má", "đủ mẹ", "đủ mé",
-      "đủ mía", "đủ mịa", "đủ mịe", "đủ mie", "đủ mia", "đìu", "đờ mờ",
-      "đê mờ", "đờ ma ma", "đờ mama", "đê mama", "đề mama", "đê ma ma",
-      "đề ma ma", "dou", "doma", "duoma", "dou má", "duo má", "dou ma",
-      "đou má", "đìu má", "á đù", "á đìu", "đậu mẹ", "đậu má",
-      "đĩ", "di~", "đuỹ", "điếm", "cđĩ", "cdi~", "đilol", "điloz",
-      "đilon", "diloz", "dilol", "dilon", "condi", "condi~", "dime",
-      "di me", "dimemay", "condime", "condimay", "condimemay",
-      "con di cho", "con di cho'", "condicho", "bitch", "biz",
-      "bít chi", "con bích", "con bic", "con bíc", "con bít", "phò", "4`",
-      "lồn", "l`", "loz", "lìn", "nulo", "ml", "matlon", "cailon",
-      "matlol", "matloz", "thangmatlon", "thangml", "đỗn lì", "tml",
-      "thml", "diml", "dml", "hãm", "xàm lol", "xam lol", "xạo lol",
-      "xao lol", "con lol", "ăn lol", "an lol", "cái lol", "cai lol",
-      "lòi lol", "loi lol", "ham lol", "củ lol", "cu lol", "ngu lol",
-      "tuổi lol", "tuoi lol", "mõm lol", "mồm lol", "mom lol", "như lol",
-      "nhu lol", "nứng lol", "nung lol", "nug lol", "nuglol", "rảnh lol",
-      "ranh lol", "đách lol", "dach lol", "mu lol", "banh lol", "tét lol",
-      "tet lol", "vạch lol", "vach lol", "cào lol", "cao lol", "tung lol",
-      "mặt lol", "mát lol", "mat lol", "xàm lon", "xam lon", "xạo lon",
-      "xao lon", "con lon", "ăn lon", "an lon", "cái lon", "cai lon",
-      "lòi lon", "loi lon", "ham lon", "củ lon", "cu lon", "ngu lon",
-      "tuổi lon", "tuoi lon", "mõm lon", "mồm lon", "mom lon", "như lon",
-      "nhu lon", "nứng lon", "nung lon", "nug lon", "nuglon", "rảnh lon",
-      "ranh lon", "đách lon", "dach lon", "mu lon", "banh lon", "tét lon",
-      "tet lon", "vạch lon", "vach lon", "cào lon", "cao lon", "tung lon",
-      "mặt lon", "mát lon", "mat lon", "cái lờ", "cl", "clgt",
-      "cờ lờ gờ tờ", "cái lề gì thốn", "đốn cửa lòng", "sml",
-      "sapmatlol", "sapmatlon", "sapmatloz", "sấp mặt", "sap mat",
-      "vlon", "vloz", "vlol", "vailon", "vai lon", "vai lol", "vailol",
-      "nốn lừng", "vcl", "vl", "vleu",
-      "chịch", "chich", "vãi", "v~", "nứng", "nug", "đút đít",
-      "chổng mông", "banh háng", "xéo háng", "xhct", "xephinh",
-      "la liếm", "đổ vỏ", "xoạc", "xoac", "chich choac", "húp sò",
-      "fuck", "fck", "bỏ bú", "buscu",
-      "ngu", "óc chó", "occho", "lao cho", "láo chó", "bố láo",
-      "chó má", "cờ hó", "sảng", "thằng chó", "thang cho'", "thang cho",
-      "chó điên", "thằng điên", "thang dien", "đồ điên", "sủa bậy",
-      "sủa tiếp", "sủa đi", "sủa càn",
-      "mẹ bà", "mẹ cha mày", "me cha may", "mẹ cha anh",
-      "mẹ cha nhà anh", "mẹ cha nhà mày", "me cha nha may",
-      "mả cha mày", "mả cha nhà mày", "ma cha may", "ma cha nha may",
-      "mả mẹ", "mả cha", "kệ mẹ", "kệ mịe", "kệ mịa", "kệ mje",
-      "kệ mja", "ke me", "ke mie", "ke mia", "ke mja", "ke mje",
-      "bỏ mẹ", "bỏ mịa", "bỏ mịe", "bỏ mja", "bỏ mje", "bo me",
-      "bo mia", "bo mie", "bo mje", "bo mja", "chetme", "chet me",
-      "chết mẹ", "chết mịa", "chết mja", "chết mịe", "chết mie",
-      "chet mia", "chet mie", "chet mja", "chet mje", "thấy mẹ",
-      "thấy mịe", "thấy mịa", "thay me", "thay mie", "thay mia",
-      "tổ cha", "bà cha mày", "cmn", "cmnl",
-      "tiên sư nhà mày", "tiên sư bố", "tổ sư"
-    ];
+    const roomNames = {
+      chung: "💬 Phòng chung",
+      lop6: "📘 Lớp 6",
+      lop7: "📘 Lớp 7",
+      lop8: "📘 Lớp 8",
+      lop9: "📘 Lớp 9",
+      lop10: "📗 Lớp 10",
+      lop11: "📗 Lớp 11",
+      lop12: "📗 Lớp 12"
+    };
+
+    // Bad words filter
+    const badWords = ["buồi","buoi","cặc","cac","lồn","lon","đụ","địt","dit","đéo","deo","đĩ","điếm","fuck","fck","đm","dm","đmm","dmm","cl","vl","vcl","sml","ngu","óc chó","thằng chó","mẹ mày","đụ má","đụ mẹ","địt mẹ","địt má"];
 
     function filterBadWords(text) {
       let filtered = text;
-      const sortedWords = [...badWords].sort((a, b) => b.length - a.length);
-      sortedWords.forEach(word => {
-        const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const regex = new RegExp(escaped, "gi");
+      [...badWords].sort((a, b) => b.length - a.length).forEach(word => {
+        const regex = new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "gi");
         filtered = filtered.replace(regex, "****");
       });
       return filtered;
     }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text ?? '';
+      return div.innerHTML;
+    }
+
+    // Xóa tin nhắn cũ hơn 1 ngày ở tất cả các phòng
+    async function cleanupOld() {
+      const cutoff = Date.now() - DAY;
+      for (const room of Object.keys(roomNames)) {
+        try {
+          const roomRef = ref(db, 'messages/' + room);
+          const snap = await get(query(roomRef, orderByChild('timestamp'), endAt(cutoff)));
+          if (!snap.exists()) continue;
+          const updates = {};
+          snap.forEach(child => { updates[child.key] = null; });
+          await update(roomRef, updates);
+        } catch (e) {
+          console.warn('Không dọn được phòng', room, e.message);
+        }
+      }
+    }
+
+    // Room buttons
+    document.querySelectorAll('.room-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.room-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentRoom = btn.dataset.room;
+        chatHeader.textContent = roomNames[currentRoom];
+        loadMessages();
+      });
+    });
 
     window.loginWithGoogle = async () => {
       try {
@@ -404,14 +460,16 @@
     onAuthStateChanged(auth, (user) => {
       if (user) {
         loginScreen.style.display = 'none';
-        chatScreen.style.display = 'block';
+        main.style.display = 'flex';
         userBar.style.display = 'flex';
-        document.getElementById('user-avatar').src = user.photoURL;
-        document.getElementById('user-name').textContent = user.displayName;
+        document.getElementById('user-avatar').src = user.photoURL || '';
+        document.getElementById('user-name').textContent = user.displayName || 'Người dùng';
+        cleanupOld();
         loadMessages();
       } else {
+        if (unsubscribe) { unsubscribe(); unsubscribe = null; }
         loginScreen.style.display = 'block';
-        chatScreen.style.display = 'none';
+        main.style.display = 'none';
         userBar.style.display = 'none';
         messagesDiv.innerHTML = '';
       }
@@ -421,15 +479,15 @@
       let text = messageInput.value.trim();
       if (!text || !auth.currentUser) return;
 
-      text = filterBadWords(text);
+      text = filterBadWords(text).slice(0, 500);
 
-      push(ref(db, 'messages'), {
+      push(ref(db, 'messages/' + currentRoom), {
         text: text,
         uid: auth.currentUser.uid,
-        name: auth.currentUser.displayName,
-        photo: auth.currentUser.photoURL,
+        name: auth.currentUser.displayName || 'Ẩn danh',
+        photo: auth.currentUser.photoURL || '',
         timestamp: serverTimestamp()
-      });
+      }).catch(err => alert("Không gửi được tin nhắn: " + err.message));
 
       messageInput.value = '';
     };
@@ -439,10 +497,26 @@
     });
 
     function loadMessages() {
-      messagesDiv.innerHTML = '';
-      const messagesRef = ref(db, 'messages');
+      if (unsubscribe) { unsubscribe(); unsubscribe = null; }
 
-      onChildAdded(messagesRef, (snapshot) => {
+      const room = currentRoom;
+      messagesDiv.innerHTML = '<div id="loading" style="text-align:center;color:#666;padding:20px;">Đang tải tin nhắn...</div>';
+
+      // Chỉ lấy tin nhắn trong vòng 1 ngày
+      const q = query(ref(db, 'messages/' + room), orderByChild('timestamp'), startAt(Date.now() - DAY));
+
+      get(q).then(snap => {
+        const loading = document.getElementById('loading');
+        if (!snap.exists() && loading && room === currentRoom) {
+          loading.textContent = 'Chưa có tin nhắn nào. Hãy là người đầu tiên!';
+        }
+      }).catch(() => {});
+
+      unsubscribe = onChildAdded(q, (snapshot) => {
+        if (room !== currentRoom) return;
+        const loading = document.getElementById('loading');
+        if (loading) loading.remove();
+
         const msg = snapshot.val();
         if (!msg) return;
 
@@ -450,24 +524,20 @@
         const div = document.createElement('div');
         div.className = 'message' + (isOwn ? ' own' : '');
 
-        const time = msg.timestamp ? new Date(msg.timestamp).toLocaleTimeString('vi-VN', {
-          hour: '2-digit', minute: '2-digit'
+        const time = msg.timestamp ? new Date(msg.timestamp).toLocaleString('vi-VN', {
+          hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit'
         }) : '';
 
         div.innerHTML = `
-          <div class="author">${msg.name || 'Ẩn danh'}</div>
+          <div class="author">${escapeHtml(msg.name || 'Ẩn danh')}</div>
           <div>${escapeHtml(msg.text)}</div>
           <div class="time">${time}</div>
         `;
         messagesDiv.appendChild(div);
         messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }, (err) => {
+        messagesDiv.innerHTML = '<div style="color:#c62828;padding:20px;">Không đọc được tin nhắn: ' + escapeHtml(err.message) + '</div>';
       });
-    }
-
-    function escapeHtml(text) {
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
     }
   </script>
 </body>
